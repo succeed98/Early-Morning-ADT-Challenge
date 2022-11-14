@@ -32,24 +32,19 @@ class LinkedList {
   get(index) {
     // your code here
     let counter = 0;
-    console.log(this.length);
-    if (this.head == null) {
-      return;
+
+    if (index < 0 || index >= this.length) {
+      return "Out of bounds";
     } else {
       this.current = this.head;
 
-      while (counter != index) {
+      while (this.current) {
+        if (counter === index) {
+          return this.current.value;
+        }
         this.current = this.current.next_node;
-        console.log("counter" + counter);
-
-        // if (counter === index) {
-        //   return this.current.value;
-        // }
-
         counter++;
       }
-
-      return this.current.value;
     }
   }
 }
@@ -58,7 +53,7 @@ const list = new LinkedList();
 
 list.add(3);
 list.add(5);
-console.log(list.get(1));
+console.log(list.get(0));
 // // => 5
 
 // module.exports = LinkedList;
