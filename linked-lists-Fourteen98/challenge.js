@@ -96,6 +96,20 @@ class LinkedList {
     return this.current
   }
 
+  contains(value) {
+    if (this.head == null) {
+      return "Empty"
+    } 
+    this.current = this.head
+    while (this.current) {
+      if (this.current.value === value) {
+        return true
+      }
+      this.current = this.current.next_node
+    }
+    return false
+  }
+
 }
 
 
@@ -103,8 +117,12 @@ const list = new LinkedList();
 
 list.add(3);
 list.add(5);
-console.log(list.getLength())
-console.log(list.indexOf(1))
+list.add(20)
+list.add(14)
+
+console.log(list.contains(4))
+// console.log(list.getLength())
+// console.log(list.indexOf(1))
 // console.log(list.get(0));
 // console.log(list.getFirst())
 // console.log(list.getLast())
