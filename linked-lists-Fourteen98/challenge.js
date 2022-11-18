@@ -65,6 +65,18 @@ boolean	addAll(int index, Collection<? extends E> c) */
     }
   }
 
+  addFirst(value) {
+    if (this.head == null) {
+      let newNode = new Node(value);
+      this.head == newNode;
+      return;
+    }
+
+    let currNode = this.head;
+    this.head = new Node(value);
+    this.head.next_node = currNode;
+  }
+
   get(index) {
     // your code here
     let counter = 1;
@@ -91,8 +103,9 @@ list.add(3);
 list.add(5);
 list.add(6);
 list.addAt(4, 0);
-list.addAll([]);
-console.log(list.get(5));
+list.addFirst(10);
+//list.addAll([]);
+console.log(list.get(2));
 // // => 5
 
 // module.exports = LinkedList;
