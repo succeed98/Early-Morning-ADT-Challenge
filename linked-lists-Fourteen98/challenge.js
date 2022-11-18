@@ -182,7 +182,7 @@ boolean	addAll(int index, Collection<? extends E> c) */
       nextNode = null;
     }
     reverseHead = previousNode
-    return head
+    return reverseHead
   }
 
 }
