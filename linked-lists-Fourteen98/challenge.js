@@ -76,6 +76,20 @@ boolean	addAll(int index, Collection<? extends E> c) */
     this.length = this.length + arr.length;
   }
 
+  // Appends the specified element to the end of this list.
+  addLast(value) {
+    this.current = this.head
+    if (this.head == null) {
+      this.head == new Node(value)
+    } else {
+      while (this.current.next_node) {
+        this.current = this.current.next_node
+      }
+      this.current = new Node(value)
+    }
+    this.length++;
+  }
+
   get(index) {
     // your code here
     let counter = 1;
