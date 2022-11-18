@@ -77,6 +77,53 @@ boolean	addAll(int index, Collection<? extends E> c) */
     this.head.next_node = currNode;
   }
 
+  //remove all values in the list
+  clear() {
+    if (this.head == null) return;
+
+    while (this.head != null) {
+      if (this.head.next_node != null) {
+        this.length--;
+      }
+      this.head = this.head.next_node;
+    }
+
+    console.log(this.length);
+  }
+
+  //returns true or false when the list contains the given value
+  contains(value) {
+    if (this.head == null) return false;
+
+    let current = this.head;
+
+    while (current.next_node) {
+      if (current.value == value) {
+        return true;
+      }
+
+      current = current.next_node;
+    }
+
+    return false;
+  }
+
+  // retrives the first element of the list
+  element() {
+    if (this.head == null) {
+      return;
+    }
+
+    return this.head.value;
+  }
+
+  // addAllAt(index, elements) {
+  //   for (let i = 0; i < elements.length; i++) {
+  //     this.addAt(index, elements[i]);
+  //     index++;
+  //   }
+  // }
+
   get(index) {
     // your code here
     let counter = 1;
@@ -104,8 +151,13 @@ list.add(5);
 list.add(6);
 list.addAt(4, 0);
 list.addFirst(10);
+
+// list.addAllAt(2, [10, 19, 20]);
+
+// list.clear();
+// console.log(list.contains(3));
 //list.addAll([]);
-console.log(list.get(2));
+console.log(list.get(5));
 // // => 5
 
 // module.exports = LinkedList;
