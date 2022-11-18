@@ -12,6 +12,25 @@ class LinkedList {
     this.length = 1;
   }
 
+  get(index) {
+    // your code here
+    let counter = 1;
+
+    if (index <= 0 || index > this.length) {
+      return "Out of bounds";
+    } else {
+      let current = this.head;
+
+      while (current) {
+        if (counter === index) {
+          return current.value;
+        }
+        current = current.next_node;
+        counter++;
+      }
+    }
+  }
+
   // Appends the specified element to the end of this list.
   add(number) {
     // your code here
@@ -41,9 +60,7 @@ class LinkedList {
     }
     let current = this.head;
     let counter = 1;
-    console.log(index)
     while (counter != index - 1) {
-      console.log(current)
       current = current.next_node;
       counter++;
     }
@@ -73,7 +90,6 @@ boolean	addAll(int index, Collection<? extends E> c) */
       this.addAt(incrementIndex, arr[i])
       incrementIndex++;
     }
-    this.length = this.length + arr.length;
   }
 
   // Appends the specified element to the end of this list.
@@ -90,35 +106,74 @@ boolean	addAll(int index, Collection<? extends E> c) */
     this.length++;
   }
 
+  addFirst(value) {
+    if (this.head == null) {
+      let newNode = new Node(value);
+      this.head == newNode;
+      return;
+    }
+    let currNode = this.head;
+    this.head = new Node(value);
+    this.head.next_node = currNode;
+  }
+
+  //remove all values in the list
+  clear() {
+    if (this.head == null) return;
+    while (this.head != null) {
+      if (this.head.next_node != null) {
+        this.length--;
+      }
+      this.head = this.head.next_node;
+    }
+  }
+
+  //returns true or false when the list contains the given value
+  contains(value) {
+    if (this.head == null) return false;
+
+    let current = this.head;
+
+    while (current.next_node) {
+      if (current.value == value) {
+        return true;
+      }
+
+      current = current.next_node;
+    }
+    return false;
+  }
+
+  // retrives the first element of the list
+  element() {
+    if (this.head == null) {
+      return;
+    }
+    return this.head.value;
+  }
+
+  // addAllAt(index, elements) {
+  //   for (let i = 0; i < elements.length; i++) {
+  //     this.addAt(index, elements[i]);
+  //     index++;
+  //   }
+  // }
+
+
   // Returns a shallow copy of this LinkedList.
   clone() {
     let shallowHead = new Node(this.head.value)
-    let shallowCurrent = shallow
+    let shallowCurrent = shallowHead
     let current = this.head;
-    while (current.next_node) {
+    while (current) {
+      shallowCurrent.next_node = new Node(current.value)
       current = current.next_node;
+      shallowCurrent = shallowCurrent.next_node
     }
-
+    console.log(shallowHead)
   }
 
-  get(index) {
-    // your code here
-    let counter = 1;
 
-    if (index <= 0 || index > this.length) {
-      return "Out of bounds";
-    } else {
-      let current = this.head;
-
-      while (current) {
-        if (counter === index) {
-          return current.value;
-        }
-        current = current.next_node;
-        counter++;
-      }
-    }
-  }
 }
 
 const list = new LinkedList();
@@ -126,9 +181,4 @@ const list = new LinkedList();
 list.add(3);
 list.add(5);
 list.add(6);
-// list.addAt(4, 0);
-list.addAllAt(3, [1, 2, 3])
-// console.log(list.get(4));
-// // => 5
-
-// module.exports = LinkedList;
+list.clone()
