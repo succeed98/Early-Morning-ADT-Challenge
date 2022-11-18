@@ -152,14 +152,6 @@ boolean	addAll(int index, Collection<? extends E> c) */
     return this.head.value;
   }
 
-  // addAllAt(index, elements) {
-  //   for (let i = 0; i < elements.length; i++) {
-  //     this.addAt(index, elements[i]);
-  //     index++;
-  //   }
-  // }
-
-
   // Returns a shallow copy of this LinkedList.
   clone() {
     let shallowHead = new Node(this.head.value)
@@ -173,6 +165,25 @@ boolean	addAll(int index, Collection<? extends E> c) */
     console.log(shallowHead)
   }
 
+  // Returns an iterator over the elements in this deque in reverse sequential order. The elements will be returned in order from last (tail) to first (head).
+  decendingIterator() {
+    let reverseHead = this.head
+    if (reverseHead === null) return null;
+
+    let reverseCurrent = reverseHead
+    let previousNode = null
+    let nextNode = null 
+
+    while (reverseCurrent) {
+      nextNode = reverseCurrent.next_node
+      reverseCurrent.next_node = previousNode
+      previousNode = reverseCurrent
+      reverseCurrent = nextNode
+      nextNode = null;
+    }
+    reverseHead = previousNode
+    return head
+  }
 
 }
 
