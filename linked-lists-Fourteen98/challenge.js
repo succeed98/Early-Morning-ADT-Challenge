@@ -90,6 +90,17 @@ boolean	addAll(int index, Collection<? extends E> c) */
     this.length++;
   }
 
+  // Returns a shallow copy of this LinkedList.
+  clone() {
+    let shallowHead = new Node(this.head.value)
+    let shallowCurrent = shallow
+    let current = this.head;
+    while (current.next_node) {
+      current = current.next_node;
+    }
+
+  }
+
   get(index) {
     // your code here
     let counter = 1;
