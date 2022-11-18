@@ -41,7 +41,9 @@ class LinkedList {
     }
     let current = this.head;
     let counter = 1;
+    console.log(index)
     while (counter != index - 1) {
+      console.log(current)
       current = current.next_node;
       counter++;
     }
@@ -50,7 +52,6 @@ class LinkedList {
     let currentNextNode = current.next_node;
     current.next_node = newNode;
     current.next_node.next_node = currentNextNode;
-
     this.length++;
   }
 
@@ -58,11 +59,21 @@ class LinkedList {
 boolean	addAll(int index, Collection<? extends E> c) */
   addAll(arr) {
     //check if the head is null
-
     let current = this.head;
     for (let i = 1; i < arr.length; i++) {
       this.add(arr[i]);
     }
+    this.length = this.length + arr.length;
+  }
+
+  // Inserts all of the elements in the specified collection into this list, starting at the specified position.
+  addAllAt(index, arr) {
+    let incrementIndex = index;
+    for (let i = 0; i <= arr.length; i++){
+      this.addAt(incrementIndex, arr[i])
+      incrementIndex++;
+    }
+    this.length = this.length + arr.length;
   }
 
   get(index) {
@@ -90,9 +101,9 @@ const list = new LinkedList();
 list.add(3);
 list.add(5);
 list.add(6);
-list.addAt(4, 0);
-list.addAll([]);
-console.log(list.get(5));
+// list.addAt(4, 0);
+list.addAllAt(3, [1, 2, 3])
+// console.log(list.get(4));
 // // => 5
 
 // module.exports = LinkedList;
