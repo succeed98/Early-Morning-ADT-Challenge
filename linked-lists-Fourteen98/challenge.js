@@ -32,9 +32,9 @@ class LinkedList {
   }
 
   // Appends the specified element to the end of this list.
-  add(number) {
+  add(value) {
     // your code here
-    let node = new Node(number);
+    let node = new Node(value);
     if (this.head == null) {
       this.head = node;
       return;
@@ -86,7 +86,7 @@ boolean	addAll(int index, Collection<? extends E> c) */
   // Inserts all of the elements in the specified collection into this list, starting at the specified position.
   addAllAt(index, arr) {
     let incrementIndex = index;
-    for (let i = 0; i <= arr.length; i++){
+    for (let i = 0; i <= arr.length; i++) {
       this.addAt(incrementIndex, arr[i])
       incrementIndex++;
     }
@@ -101,7 +101,7 @@ boolean	addAll(int index, Collection<? extends E> c) */
       while (this.current.next_node) {
         this.current = this.current.next_node
       }
-      this.current = new Node(value)
+      this.current.next_node = new Node(value)
     }
     this.length++;
   }
@@ -172,7 +172,7 @@ boolean	addAll(int index, Collection<? extends E> c) */
 
     let reverseCurrent = reverseHead
     let previousNode = null
-    let nextNode = null 
+    let nextNode = null
 
     while (reverseCurrent) {
       nextNode = reverseCurrent.next_node
@@ -188,7 +188,7 @@ boolean	addAll(int index, Collection<? extends E> c) */
   // Returns the last element in this list.
   getLast() {
     if (this.head === null) return "empty"
-    let current = this.head 
+    let current = this.head
     while (current.next_node) {
       current = current.next_node
     }
@@ -210,11 +210,47 @@ boolean	addAll(int index, Collection<? extends E> c) */
     }
     return index
   }
+
+  // Adds the specified element as the tail(last element) of this list.
+  offer(value) {
+    let node = new Node(value);
+    if (this.head == null) {
+      this.head = node;
+      return true
+    } else {
+      let current = this.head;
+      while (current.next_node) {
+        current = current.next_node;
+      }
+      current.next_node = node;
+      this.length++;
+      return true
+    }
+  }
+
+  // Inserts the specified element at the end of this list.
+  offerLast(value) {
+    let node = new Node(value)
+    if (this.head === null) {
+      this.head = node
+      return true
+    } else {
+      let current = this.head
+      while (current.next_node) {
+        current = current.next_node
+      }
+      current.next_node = node
+      this.length++
+      return true
+    }
+  }
+
+  
+
 }
 
 const list = new LinkedList();
 list.add(3);
 list.add(5);
 list.add(6);
-list.add(5);
-console.log(list.lastIndexOf(5))
+console.log(list.offer(1))
