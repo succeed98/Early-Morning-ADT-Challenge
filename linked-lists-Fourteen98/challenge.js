@@ -185,11 +185,36 @@ boolean	addAll(int index, Collection<? extends E> c) */
     return reverseHead
   }
 
+  // Returns the last element in this list.
+  getLast() {
+    if (this.head === null) return "empty"
+    let current = this.head 
+    while (current.next_node) {
+      current = current.next_node
+    }
+    return current
+  }
+
+  // Returns the index of the last occurrence of the specified element in this list, or - 1 if this list does not contain the element.
+  lastIndexOf(value) {
+    if (this.head === null) return -1
+    let current = this.head
+    let counter = 1
+    let index = -1
+    while (current) {
+      if (current.value === value) {
+        index = counter
+      }
+      current = current.next_node
+      counter++
+    }
+    return index
+  }
 }
 
 const list = new LinkedList();
-
 list.add(3);
 list.add(5);
 list.add(6);
-list.clone()
+list.add(5);
+console.log(list.lastIndexOf(5))
