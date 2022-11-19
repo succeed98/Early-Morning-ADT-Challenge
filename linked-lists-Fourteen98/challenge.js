@@ -245,7 +245,13 @@ boolean	addAll(int index, Collection<? extends E> c) */
     }
   }
 
-  
+  peekFirst() {
+    // Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
+    if (this.head === null) return null;
+    return this.head
+  }
+
+
 
 }
 
