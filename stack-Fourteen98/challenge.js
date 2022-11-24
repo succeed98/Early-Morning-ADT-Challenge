@@ -15,18 +15,15 @@ class Stack {
 
   push(number) {
     // your code here
-    let newNode = new Node(number);
-    if (this.head == null) {
-      this.head = newNode;
-      this.length++;
-    } else {
-      let current = this.head;
-      while (current.next_node) {
-        current = current.next_node;
-      }
-      current.next_node = newNode;
-      this.length++;
+    this.array.push(number);
+    if (this.head == null) this.head = Node(number);
+    let current = this.head;
+
+    while (current.next_node) {
+      current = current.next_node;
     }
+
+    current.next_node = Node(number);
   }
 
   pop() {
@@ -45,7 +42,6 @@ class Stack {
     return popped;
   }
 
-
   //returns the top most node value
   peek() {
     if (this.head == null) return;
@@ -53,11 +49,10 @@ class Stack {
     let value = this.head.value;
 
     return value;
-}
+  }
   empty() {
     if (this.head == null) return true;
     return false;
-
   }
 
   peek() {
@@ -70,16 +65,16 @@ class Stack {
 
   search(value) {
     let count = 1;
-    if (this.head == null) return -1; 
-    let current = this.head
+    if (this.head == null) return -1;
+    let current = this.head;
     while (current.value != value) {
-      count++
-      current = current.next_node
+      count++;
+      current = current.next_node;
       if (count == this.length) {
         return -1;
       }
     }
-    return count
+    return count;
   }
 }
 
