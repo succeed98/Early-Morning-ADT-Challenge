@@ -2,20 +2,32 @@
 
 class Node {
   constructor(value, next_node = null) {
-    this.head = null;
-    this.next_node = null;
+    this.head = value;
+    this.next_node = next_node;
   }
 }
 
 class Stack {
   constructor() {
     this.head = null;
-    this.length = 1;
+    this.length = 0;
   }
 
   push(number) {
     // your code here
-    this.array.push(number);
+    let newNode = new Node (number)
+    if (this.head == null) {
+      this.head = newNode
+      this.length++
+    } else {
+      let current = this.head
+      while (current.next_node) {
+        current = current.next_node
+      }
+      current.next_node = newNode
+      this.length++
+    }
+    
   }
 
   pop() {
@@ -34,18 +46,19 @@ class Stack {
 const stack = new Stack();
 stack.push(3);
 stack.push(5);
-console.log(stack.pop());
+console.log(stack.head)
+// console.log(stack.pop());
 // => 5
 
-stack.push(2);
-stack.push(7);
-console.log(stack.pop());
-// => 7
+// stack.push(2);
+// stack.push(7);
+// console.log(stack.pop());
+// // => 7
 
-console.log(stack.pop());
-// => 2
+// console.log(stack.pop());
+// // => 2
 
-console.log(stack.pop());
+// console.log(stack.pop());
 // => 3
 
 module.exports = Stack;
