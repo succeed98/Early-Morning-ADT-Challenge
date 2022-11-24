@@ -2,7 +2,7 @@
 
 class Node {
   constructor(value, next_node = null) {
-    this.head = value;
+    this.value = value;
     this.next_node = next_node;
   }
 }
@@ -15,38 +15,40 @@ class Stack {
 
   push(number) {
     // your code here
-    let newNode = new Node (number)
+    let newNode = new Node(number);
     if (this.head == null) {
-      this.head = newNode
-      this.length++
+      this.head = newNode;
+      this.length++;
     } else {
-      let current = this.head
+      let current = this.head;
       while (current.next_node) {
-        current = current.next_node
+        current = current.next_node;
       }
-      current.next_node = newNode
-      this.length++
+      current.next_node = newNode;
+      this.length++;
     }
-    
   }
 
   pop() {
     // your code here
     if (this.head == null) return;
     let current = this.head;
-
+    let previous = this.head;
     while (current.next_node) {
+      previous = current;
       current = current.next_node;
     }
 
-    return current;
+    let popped = current.value;
+    previous.next_node = null;
+    return popped;
   }
 }
 
 const stack = new Stack();
 stack.push(3);
 stack.push(5);
-console.log(stack.head)
+console.log(stack.head);
 // console.log(stack.pop());
 // => 5
 
