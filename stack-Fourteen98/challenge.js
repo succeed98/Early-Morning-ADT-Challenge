@@ -1,8 +1,18 @@
 // Optionally: start with your code from LinkedList challenge.
+
+class Node {
+  constructor(value, next_node = null) {
+    this.head = null;
+    this.next_node = null;
+  }
+}
+
 class Stack {
   constructor() {
-    this.array = [];
+    this.head = null;
+    this.length = 1;
   }
+
   push(number) {
     // your code here
     this.array.push(number);
@@ -10,7 +20,14 @@ class Stack {
 
   pop() {
     // your code here
-    return this.array.pop();
+    if (this.head == null) return;
+    let current = this.head;
+
+    while (current.next_node) {
+      current = current.next_node;
+    }
+
+    return current;
   }
 }
 
