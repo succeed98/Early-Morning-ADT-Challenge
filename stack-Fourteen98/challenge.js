@@ -1,20 +1,15 @@
 // Optionally: start with your code from LinkedList challenge.
-
 class Stack {
-  constructor () {
-    this.items = [];
+  constructor() {
+    this.array =  []
   }
   push(number) {
     // your code here
-    this.items.push(number)
+    this.array.push(number)
   }
 
   pop() {
     // your code here
-    if(this.items.length === 0) {
-      return null;
-    }
-    return this.items.pop()
   }
 }
 
