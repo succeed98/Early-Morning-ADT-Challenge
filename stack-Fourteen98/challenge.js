@@ -42,7 +42,6 @@ class Stack {
     }
 
     if (previous.next_node == null) {
-      console.log("hello world");
       let popped = this.head.value;
       this.head = null;
       return popped;
