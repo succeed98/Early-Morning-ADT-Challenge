@@ -15,15 +15,18 @@ class Stack {
 
   push(number) {
     // your code here
-    this.array.push(number);
-    if (this.head == null) this.head = Node(number);
-    let current = this.head;
-
-    while (current.next_node) {
-      current = current.next_node;
+    let newNode = new Node(number);
+    if (this.head == null) {
+      this.head = newNode;
+      this.length++;
+    } else {
+      let current = this.head;
+      while (current.next_node) {
+        current = current.next_node;
+      }
+      current.next_node = newNode;
+      this.length++;
     }
-
-    current.next_node = Node(number);
   }
 
   pop() {
@@ -54,36 +57,11 @@ class Stack {
     if (this.head == null) return true;
     return false;
   }
-
-  peek() {
-    if (this.head == null) return;
-
-    let value = this.head.value;
-
-    return value;
-  }
-
-  search(value) {
-    let count = 1;
-    if (this.head == null) return -1;
-    let current = this.head;
-    while (current.value != value) {
-      count++;
-      current = current.next_node;
-      if (count == this.length) {
-        return -1;
-      }
-    }
-    return count;
-  }
 }
 
 const stack = new Stack();
 stack.push(3);
 stack.push(5);
-
-stack.push(1);
-console.log(stack.search(0));
 
 console.log(stack.empty());
 // console.log(stack.pop());
