@@ -41,14 +41,20 @@ class Stack {
 
     let popped = current.value;
     previous.next_node = null;
+    this.length--;
     return popped;
+  }
+
+  empty() {
+    if (this.head == null) return true;
+    return false;
   }
 }
 
 const stack = new Stack();
 stack.push(3);
 stack.push(5);
-console.log(stack.head);
+console.log(stack.empty());
 // console.log(stack.pop());
 // => 5
 
