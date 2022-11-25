@@ -31,12 +31,21 @@ class Stack {
 
   pop() {
     // your code here
-    if (this.head == null) return;
+    if (this.head == null) {
+      return null;
+    }
     let current = this.head;
     let previous = this.head;
     while (current.next_node) {
       previous = current;
       current = current.next_node;
+    }
+
+    if (previous.next_node == null) {
+      console.log("hello world");
+      let popped = this.head.value;
+      this.head = null;
+      return popped;
     }
 
     let popped = current.value;
@@ -47,12 +56,13 @@ class Stack {
 
   //returns the top most node value
   peek() {
-    if (this.head == null) return;
+    if (this.head == null) return null;
 
     let value = this.head.value;
 
     return value;
   }
+
   empty() {
     if (this.head == null) return true;
     return false;
@@ -63,7 +73,12 @@ const stack = new Stack();
 stack.push(3);
 stack.push(5);
 
-console.log(stack.empty());
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
+
 // console.log(stack.pop());
 
 // => 5
