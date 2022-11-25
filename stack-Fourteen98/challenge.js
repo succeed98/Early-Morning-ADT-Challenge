@@ -43,13 +43,23 @@ class Stack {
     previous.next_node = null;
     return popped;
   }
+
+  //returns the top most node value
+  peek() {
+    if (this.head == null) return;
+
+    let value = this.head.value;
+
+    return value;
+  }
 }
 
 const stack = new Stack();
 stack.push(3);
 stack.push(5);
+stack.pop();
+stack.pop();
 console.log(stack.head);
-// console.log(stack.pop());
 // => 5
 
 // stack.push(2);
@@ -57,7 +67,6 @@ console.log(stack.head);
 // console.log(stack.pop());
 // // => 7
 
-// console.log(stack.pop());
 // // => 2
 
 // console.log(stack.pop());
