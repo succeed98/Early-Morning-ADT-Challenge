@@ -74,7 +74,7 @@ stack.push(5);
 
 stack.pop();
 stack.pop();
-stack.pop();
+console.log(stack.pop());
 stack.pop();
 stack.pop();
 
