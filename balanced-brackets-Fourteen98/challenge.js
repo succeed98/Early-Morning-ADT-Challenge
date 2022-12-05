@@ -40,13 +40,26 @@ function balancedBrackets(string) {
     //     }
     // }
     // return (stack.length === 0);
+    // )(
     for (let i = 0; i < string.length; i++){
         // push if char is a closing bracets
-        if (string[i] === '[' || string[i] === '{' || string[i] === '(') {
-            stack.push(string[i]);
+        if (string[i] != '[' && string[i] != ']' && string[i] != '{' && string[i] != '}' && string[i] != '(' && string[i] != ')') {
             continue;
         }
+        if (string[i] === '[' || string[i] === '{' || string[i] === '(') {
+            stack.push(string[i]);
+        } else {
+            // console.log(stack)
+            if (stack.length === 0) return false;
+            let popped = stack.pop()
+            if ( (string[i] !== ']' && popped === '[') || (string[i] !== '}' && popped === '{') || (string[i] !== ')' && popped === '(') ) {
+                return false;
+            }
+           
+        }
     }
+
+    return stack.length == 0 ? true : false;
 }
 
 console.log(balancedBrackets('(hello)[world]'))
@@ -58,4 +71,5 @@ console.log(balancedBrackets('([)]'))
 console.log(balancedBrackets('[({}{}{})([])]'))
 // => true
 
-module.exports = balancedBrackets
+
+module.exports = balancedBrackets;
