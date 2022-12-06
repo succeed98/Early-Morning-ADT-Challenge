@@ -1,50 +1,30 @@
 function balancedBrackets(string) {
-    // your code here
-    let stack = [];
+  // your code here
+  let stack = [];
 
-    // Traversing the Expression
-    for (let i = 0; i < string.length; i++) {
-        let x = string[i];
-
-        if (x === '(' || x === '[' || x === '{') {
-            stack.push(x);
-            continue;
-        }
-
-        if (stack.length === 0)
-            return false;
-
-        let check;
-        switch (x) {
-            case ')':
-                check = stack.pop();
-                if (check === '{' || check === '[')
-                    return false;
-                break;
-
-            case '}':
-                check = stack.pop();
-                if (check === '(' || check === '[')
-                    return false;
-                break;
-
-            case ']':
-                check = stack.pop();
-                if (check === '(' || check === '{')
-                    return false;
-                break;
-        }
+  var array = [];
+  let validStrings = ["(", ")", "{", "}", "[", "]"];
+  s = string.split("");
+  for (let i = 0; i < s.length; i++) {
+    if (!validStrings.includes(s[i])) {
+      continue;
     }
-    return (stack.length === 0);
+    if (s[i] === "(") array.push(")");
+    else if (s[i] === "[") array.push("]");
+    else if (s[i] === "{") array.push("}");
+    else if (s.length === 0 || array[array.length - 1] !== s[i]) return false;
+    else array.pop();
+  }
+  return array.length === 0;
 }
 
-console.log(balancedBrackets('(hello)[world]'))
+console.log(balancedBrackets("(hello)[world]"));
 // => true
 
-console.log(balancedBrackets('([)]'))
+console.log(balancedBrackets("([)]"));
 // => false
 
-console.log(balancedBrackets('[({}{}{})([])]'))
+console.log(balancedBrackets("[({}{}{})([])]"));
 // => true
 
-module.exports = balancedBrackets
+module.exports = balancedBrackets;
